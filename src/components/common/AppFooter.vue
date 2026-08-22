@@ -20,7 +20,7 @@ const handleSubscribe = () => {
   <footer class="bg-[#080c13] border-t border-zinc-800/80 text-zinc-400 mt-20">
     <!-- Value Propositions Strip -->
     <div class="border-b border-zinc-800/60 bg-[#0b0f17]/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="flex items-start gap-4">
             <div class="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
@@ -66,7 +66,7 @@ const handleSubscribe = () => {
     </div>
 
     <!-- Main Footer Links & Newsletter -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
         <!-- Brand Column -->
         <div class="lg:col-span-2 space-y-4">
