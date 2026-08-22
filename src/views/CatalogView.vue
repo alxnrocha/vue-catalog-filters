@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import AppHeader from '@/components/common/AppHeader.vue';
 import AppFooter from '@/components/common/AppFooter.vue';
 import CommandPalette from '@/components/common/CommandPalette.vue';
+import FilterSidebar from '@/components/catalog/FilterSidebar.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
 import type { Product } from '@/types/catalog';
@@ -51,22 +52,20 @@ const handleOpenWishlist = () => {
         </p>
       </div>
 
-      <!-- Placeholder grid content while next issues implement catalog engine -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="hidden md:block p-6 rounded-2xl glass-card border border-zinc-800/80">
-          <h2 class="text-sm font-semibold tracking-wider uppercase text-zinc-300 mb-4">Filtros</h2>
-          <div class="space-y-4">
-            <div class="h-4 bg-zinc-800/80 rounded w-3/4 animate-pulse"></div>
-            <div class="h-4 bg-zinc-800/60 rounded w-1/2 animate-pulse"></div>
-            <div class="h-4 bg-zinc-800/60 rounded w-2/3 animate-pulse"></div>
-          </div>
+      <!-- Main Catalog Layout (Sidebar + Products Grid) -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+        <!-- Desktop Sidebar Filters -->
+        <div class="hidden lg:block p-6 rounded-2xl glass-card border border-zinc-800/80 sticky top-24">
+          <FilterSidebar />
         </div>
 
-        <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="i in 3" :key="i" class="rounded-2xl glass-card p-4 border border-zinc-800/80 space-y-3">
-            <div class="aspect-[3/4] bg-zinc-800/60 rounded-xl animate-pulse"></div>
-            <div class="h-4 bg-zinc-800/80 rounded w-2/3"></div>
-            <div class="h-4 bg-amber-500/30 rounded w-1/3"></div>
+        <div class="lg:col-span-3 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div v-for="i in 3" :key="i" class="rounded-2xl glass-card p-4 border border-zinc-800/80 space-y-3">
+              <div class="aspect-[3/4] bg-zinc-800/60 rounded-xl animate-pulse"></div>
+              <div class="h-4 bg-zinc-800/80 rounded w-2/3"></div>
+              <div class="h-4 bg-amber-500/30 rounded w-1/3"></div>
+            </div>
           </div>
         </div>
       </div>
