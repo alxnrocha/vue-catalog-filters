@@ -7,6 +7,7 @@ import FilterSidebar from '@/components/catalog/FilterSidebar.vue';
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips.vue';
 import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
 import ProductGrid from '@/components/catalog/ProductGrid.vue';
+import MobileFilterDrawer from '@/components/catalog/MobileFilterDrawer.vue';
 import QuickViewModal from '@/components/quickview/QuickViewModal.vue';
 import CartDrawer from '@/components/cart/CartDrawer.vue';
 import CheckoutDrawer from '@/components/checkout/CheckoutDrawer.vue';
@@ -109,6 +110,11 @@ const handleOpenCheckout = () => {
       v-model="store.isQuickViewOpen"
       :product="store.selectedProductForQuickView"
       @add-to-cart="handleAddToCartFromModal"
+    />
+
+    <!-- Mobile Responsive Filters Drawer -->
+    <MobileFilterDrawer
+      v-model="store.isMobileFilterDrawerOpen"
     />
 
     <!-- Shopping Cart Slide-over Drawer -->
