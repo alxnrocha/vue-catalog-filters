@@ -9,6 +9,7 @@ import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
 import ProductGrid from '@/components/catalog/ProductGrid.vue';
 import QuickViewModal from '@/components/quickview/QuickViewModal.vue';
 import CartDrawer from '@/components/cart/CartDrawer.vue';
+import CheckoutDrawer from '@/components/checkout/CheckoutDrawer.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useWishlistStore } from '@/stores/useWishlistStore';
 import { useCartStore } from '@/stores/useCartStore';
@@ -114,6 +115,11 @@ const handleOpenCheckout = () => {
     <CartDrawer
       v-model="cartStore.isCartOpen"
       @open-checkout="handleOpenCheckout"
+    />
+
+    <!-- Secure Multi-Step Checkout Drawer -->
+    <CheckoutDrawer
+      v-model="isCheckoutDrawerOpen"
     />
   </div>
 </template>
