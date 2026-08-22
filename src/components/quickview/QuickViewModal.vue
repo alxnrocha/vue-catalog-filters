@@ -118,7 +118,7 @@ const decrementQuantity = () => {
 
       <!-- Modal Card -->
       <div
-        class="relative w-full max-w-4xl bg-[#0e1420] border border-zinc-700/90 rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_50px_rgba(245,158,11,0.15)] overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
+        class="relative w-full max-w-5xl lg:max-w-6xl xl:max-w-[1260px] bg-[#0e1420] border border-zinc-700/90 rounded-2xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.9),0_0_60px_rgba(245,158,11,0.18)] overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
       >
         <!-- Close Button -->
         <button
@@ -130,17 +130,17 @@ const decrementQuantity = () => {
           <X class="w-5 h-5" />
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 max-h-[85vh] overflow-y-auto">
-          <!-- Left: Gallery -->
-          <div class="p-6 md:p-8 bg-[#090d15] border-b md:border-b-0 md:border-r border-zinc-800/80 flex items-center justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-12 max-h-[88vh] overflow-y-auto">
+          <!-- Left: Gallery (expanded to 7 cols) -->
+          <div class="md:col-span-7 p-6 sm:p-8 lg:p-10 bg-[#090d15] border-b md:border-b-0 md:border-r border-zinc-800/80 flex items-center justify-center">
             <ProductGallery
               :images="product.images"
               :product-name="product.name"
             />
           </div>
 
-          <!-- Right: Details & Purchase Options -->
-          <div class="p-6 md:p-8 space-y-6 flex flex-col justify-between">
+          <!-- Right: Details & Purchase Options (5 cols) -->
+          <div class="md:col-span-5 p-6 sm:p-8 lg:p-10 space-y-6 flex flex-col justify-between">
             <!-- Header Information -->
             <div class="space-y-2">
               <div class="flex items-center gap-2">
