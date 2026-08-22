@@ -7,10 +7,11 @@ import FilterSidebar from '@/components/catalog/FilterSidebar.vue';
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips.vue';
 import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
 import ProductGrid from '@/components/catalog/ProductGrid.vue';
+import QuickViewModal from '@/components/quickview/QuickViewModal.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useWishlistStore } from '@/stores/useWishlistStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
-import type { Product } from '@/types/catalog';
+import type { Product, ProductColor, ProductSize } from '@/types/catalog';
 
 const store = useCatalogStore();
 const wishlistStore = useWishlistStore();
@@ -32,6 +33,15 @@ const handleOpenCart = () => {
 
 const handleOpenWishlist = () => {
   // Will connect with wishlist in Issue #10
+};
+const handleAddToCartFromModal = (payload: {
+  product: Product;
+  selectedColor: ProductColor;
+  selectedSize: ProductSize;
+  quantity: number;
+}) => {
+  // Handled with cart store in Issue #12
+  console.log('Added to cart:', payload);
 };
 </script>
 
@@ -83,6 +93,13 @@ const handleOpenWishlist = () => {
     <CommandPalette
       v-model="store.isCommandPaletteOpen"
       @select-product="handleSelectProductFromSearch"
+    />
+
+    <!-- Quick View Product Modal -->
+    <QuickViewModal
+      v-model="store.isQuickViewOpen"
+      :product="store.selectedProductForQuickView"
+      @add-to-cart="handleAddToCartFromModal"
     />
   </div>
 </template>
