@@ -7,13 +7,24 @@
     <div class="badge-header">
       <h2 class="badge-title">Aurelia Atelier</h2>
       <div class="badge-tag-wrap">
-        <span class="badge-pill">
+        <a
+          href="https://github.com/alxnrocha"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="badge-pill"
+          title="Ver perfil de Alexandre Rocha no GitHub"
+        >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
-          MEU PROJETO
-        </span>
+          <span>@alxnrocha</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
         <button class="badge-close" @click="closeBadge" title="Fechar (retorna em 5s)" aria-label="Fechar">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -28,7 +39,7 @@
     </div>
 
     <p class="badge-desc">
-      Catálogo de Moda & Filtros Multifacetados em Vue 3.5 • Desenvolvido por <a href="https://github.com/alxnrocha" target="_blank" rel="noopener noreferrer">Alexandre Rocha (@alxnrocha)</a>
+      Catálogo de Moda & Filtros Multifacetados em Vue 3.5 • Desenvolvido por <a href="https://github.com/alxnrocha" target="_blank" rel="noopener noreferrer">Alexandre Rocha</a>
     </p>
 
     <footer class="badge-footer">
@@ -37,7 +48,9 @@
         <span class="badge-divider">|</span>
         <span class="badge-branch">⑂ main</span>
       </div>
-      <span>Atualizado recentemente</span>
+      <a href="https://github.com/alxnrocha" target="_blank" rel="noopener noreferrer" class="badge-gh">
+        github.com/alxnrocha
+      </a>
     </footer>
   </aside>
 </template>
@@ -112,8 +125,12 @@ function closeBadge() {
   font-size: 10px !important;
   font-weight: 800 !important;
   letter-spacing: 0.5px !important;
-  text-transform: uppercase !important;
+  text-decoration: none !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
+  transition: background-color 0.15s ease !important;
+}
+.badge-pill:hover {
+  background-color: #2ea043 !important;
 }
 .badge-close {
   background: transparent !important;
@@ -148,7 +165,7 @@ function closeBadge() {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
 }
 .badge-desc a {
-  color: #c9d1d9 !important;
+  color: #e6edf3 !important;
   font-weight: 600 !important;
   text-decoration: none !important;
 }
@@ -191,5 +208,14 @@ function closeBadge() {
 .badge-branch {
   color: #c9d1d9 !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+.badge-gh {
+  color: #8b949e !important;
+  text-decoration: none !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+.badge-gh:hover {
+  color: #58a6ff !important;
+  text-decoration: underline !important;
 }
 </style>
