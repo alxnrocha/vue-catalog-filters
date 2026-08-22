@@ -1,7 +1,7 @@
 <template>
   <aside
     v-if="isVisible"
-    aria-label="Informações do Projeto"
+    aria-label="Project Information"
     class="author-project-badge"
   >
     <div class="badge-header">
@@ -12,7 +12,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="badge-pill"
-          title="Ver perfil de Alexandre Rocha no GitHub"
+          title="View Alexandre Rocha's GitHub profile"
         >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -25,7 +25,7 @@
             <line x1="10" y1="14" x2="21" y2="3"/>
           </svg>
         </a>
-        <button class="badge-close" @click="closeBadge" title="Fechar (retorna em 5s)" aria-label="Fechar">
+        <button class="badge-close" @click="closeBadge" title="Close (returns in 5s)" aria-label="Close">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -39,12 +39,12 @@
     </div>
 
     <p class="badge-desc">
-      Catálogo de Moda & Filtros Multifacetados em Vue 3.5 • Desenvolvido por <a href="https://github.com/alxnrocha" target="_blank" rel="noopener noreferrer">Alexandre Rocha</a>
+        Luxury Fashion E-Commerce with Dynamic Multi-Filters in Vue 3.5 • Developed by <a href="https://github.com/alxnrocha" target="_blank" rel="noopener noreferrer">Alexandre Rocha</a>
     </p>
 
     <footer class="badge-footer">
       <div class="badge-status">
-        <span class="badge-active"><span class="badge-dot"></span> ATIVO</span>
+        <span class="badge-active"><span class="badge-dot"></span>ACTIVE</span>
         <span class="badge-divider">|</span>
         <span class="badge-branch">⑂ main</span>
       </div>
