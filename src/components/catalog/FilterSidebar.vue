@@ -74,29 +74,28 @@ const filteredBrandsList = computed(() => {
         <ChevronDown v-else class="w-4 h-4 text-zinc-500" />
       </button>
 
-      <div v-show="openSections.categories" class="mt-3 space-y-1.5">
+      <div v-show="openSections.categories" class="mt-3 space-y-1">
         <button
           v-for="cat in mockCategories"
           :key="cat.id"
           type="button"
           :class="[
-            'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-all cursor-pointer text-left',
+            'group w-full flex items-center justify-between py-2 px-2.5 rounded-lg text-xs transition-all duration-200 cursor-pointer text-left',
             store.filters.category === cat.id
-              ? 'bg-amber-500/15 text-amber-300 font-semibold border border-amber-500/30'
-              : 'text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-200',
+              ? 'text-amber-400 font-semibold bg-amber-500/10 pl-3 border-l-2 border-amber-400'
+              : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 hover:pl-3',
           ]"
           @click="store.setCategory(cat.id)"
         >
           <span class="flex items-center gap-2">
-            <span
-              :class="[
-                'w-1.5 h-1.5 rounded-full',
-                store.filters.category === cat.id ? 'bg-amber-400 shadow-[0_0_6px_rgba(245,158,11,0.8)]' : 'bg-transparent',
-              ]"
-            ></span>
             <span>{{ cat.label }}</span>
           </span>
-          <span class="text-[11px] font-mono text-zinc-500">
+          <span
+            :class="[
+              'text-[11px] font-mono transition-colors',
+              store.filters.category === cat.id ? 'text-amber-400/90 font-bold' : 'text-zinc-600 group-hover:text-zinc-400'
+            ]"
+          >
             {{ store.categoryFacetCounts[cat.id] ?? cat.count }}
           </span>
         </button>
@@ -275,7 +274,12 @@ const filteredBrandsList = computed(() => {
           <label
             v-for="brand in filteredBrandsList"
             :key="brand.id"
-            class="flex items-center justify-between p-1.5 rounded-lg hover:bg-zinc-800/40 text-xs text-zinc-300 cursor-pointer transition-colors"
+            :class="[
+              'flex items-center justify-between p-1.5 rounded-lg text-xs cursor-pointer transition-colors',
+              store.brandFacetCounts[brand.name] === 0 && !store.filters.brands.includes(brand.name)
+                ? 'text-zinc-600 opacity-40 hover:opacity-70'
+                : 'text-zinc-300 hover:bg-zinc-800/40 opacity-100',
+            ]"
           >
             <div class="flex items-center gap-2">
               <input
@@ -287,7 +291,7 @@ const filteredBrandsList = computed(() => {
               <span>{{ brand.name }}</span>
             </div>
             <span class="text-[10px] font-mono text-zinc-500">
-              {{ store.brandFacetCounts[brand.name] ?? brand.count }}
+              {{ store.brandFacetCounts[brand.name] ?? 0 }}
             </span>
           </label>
         </div>

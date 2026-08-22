@@ -68,7 +68,7 @@ const handleSelectColor = (index: number, e: MouseEvent) => {
       <div class="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1">
         <span
           v-if="product.discountPercentage"
-          class="px-2 py-0.5 rounded-md bg-amber-500/25 text-amber-300 font-bold text-[11px] border border-amber-500/40 backdrop-blur-md shadow-sm"
+          class="px-2 py-0.5 rounded-md bg-amber-500 text-black font-bold text-[11px] shadow-md select-none"
         >
           -{{ product.discountPercentage }}%
         </span>
@@ -175,10 +175,10 @@ const handleSelectColor = (index: number, e: MouseEvent) => {
     @mouseleave="isHovered = false"
   >
     <!-- Left: Image & Badge -->
-    <div class="relative w-full sm:w-44 aspect-[3/4] sm:aspect-square rounded-xl overflow-hidden bg-zinc-900/80 shrink-0">
+    <div class="relative w-full sm:w-44 aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900/80 shrink-0">
       <span
         v-if="product.discountPercentage"
-        class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-md bg-amber-500/25 text-amber-300 font-bold text-[11px] border border-amber-500/40 backdrop-blur-md"
+        class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-md bg-amber-500 text-black font-bold text-[11px] shadow-md select-none"
       >
         -{{ product.discountPercentage }}%
       </span>

@@ -71,14 +71,17 @@ const handleMaxInput = (e: Event) => {
         }"
       ></div>
 
-      <!-- Native Range Inputs (Overlaid) -->
+      <!-- Native Range Inputs (Overlaid with isolated thumb pointer-events) -->
       <input
         type="range"
         :min="min"
         :max="max"
         :step="step"
         :value="minPrice"
-        class="range-slider-thumb absolute w-full h-1.5 opacity-0 cursor-pointer pointer-events-none z-30"
+        :class="[
+          'range-slider-thumb absolute w-full h-1.5 opacity-0 cursor-pointer pointer-events-none',
+          minPercent > 50 ? 'z-40' : 'z-30'
+        ]"
         @input="handleMinInput"
       />
       <input
@@ -106,24 +109,28 @@ const handleMaxInput = (e: Event) => {
 
 <style scoped>
 .range-slider-thumb {
-  pointer-events: all;
+  pointer-events: none !important;
   -webkit-appearance: none;
   appearance: none;
+  background: transparent;
 }
 
 .range-slider-thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 .range-slider-thumb::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: auto !important;
+  border: none;
 }
 </style>

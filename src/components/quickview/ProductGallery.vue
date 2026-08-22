@@ -19,36 +19,41 @@ watch(
 </script>
 
 <template>
-  <div class="flex flex-col-reverse sm:flex-row gap-4 sm:gap-5 w-full h-full items-center sm:items-stretch">
-    <!-- Vertical Thumbnails List -->
-    <div class="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-[580px] shrink-0 py-1 sm:py-0 pr-1">
+  <div class="relative w-full h-full bg-zinc-950 overflow-hidden flex items-center justify-center select-none">
+    <!-- Main Display Image (Absolute fill to keep container strictly 100% fixed) -->
+    <img
+      :src="images[activeIndex] || images[0]"
+      :alt="productName"
+      class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+    />
+
+    <!-- Floating Thumbnails Strip Overlaid on Left Edge -->
+    <div
+      v-if="images.length > 1"
+      class="absolute left-4 top-4 bottom-4 flex flex-col gap-3 overflow-y-auto py-1 z-10 custom-scrollbar"
+    >
       <button
         v-for="(img, idx) in images"
         :key="idx"
         type="button"
         :class="[
-          'relative w-16 h-22 sm:w-20 sm:h-28 rounded-xl overflow-hidden border-2 transition-all cursor-pointer bg-zinc-900 shrink-0',
-          activeIndex === idx
-            ? 'border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105'
-            : 'border-zinc-800 hover:border-zinc-600 opacity-60 hover:opacity-100',
+          'relative w-16 aspect-[3/4] rounded-xl overflow-hidden transition-opacity duration-200 cursor-pointer bg-zinc-900 shrink-0 p-0 border-0 outline-none select-none',
+          activeIndex === idx ? 'opacity-100' : 'opacity-50 hover:opacity-80',
         ]"
         @click="activeIndex = idx"
       >
         <img
           :src="img"
           :alt="`${productName} miniatura ${idx + 1}`"
-          class="w-full h-full object-cover object-top"
+          class="w-full h-full object-cover object-top block"
         />
-      </button>
-    </div>
 
-    <!-- Main Large Display Image Container -->
-    <div class="relative flex-1 w-full min-h-[380px] sm:min-h-[500px] lg:min-h-[580px] rounded-2xl overflow-hidden bg-zinc-900/90 border border-zinc-800/80 group">
-      <img
-        :src="images[activeIndex] || images[0]"
-        :alt="productName"
-        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-      />
+        <!-- Razor-sharp Gold Active Border Overlay -->
+        <span
+          v-if="activeIndex === idx"
+          class="absolute inset-0 rounded-xl border-2 border-amber-400 pointer-events-none"
+        ></span>
+      </button>
     </div>
   </div>
 </template>

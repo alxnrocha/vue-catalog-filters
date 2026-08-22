@@ -6,7 +6,7 @@ export type ProductCategory =
   | 'calzado'
   | 'accesorios';
 
-export type ProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export type ProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'Única';
 
 export interface ProductColor {
   id: string;
@@ -21,8 +21,8 @@ export interface Product {
   brand: string;
   category: ProductCategory;
   price: number;
-  originalPrice?: number;
-  discountPercentage?: number;
+  originalPrice?: number | null;
+  discountPercentage?: number | null;
   rating: number;
   reviewsCount: number;
   description: string;

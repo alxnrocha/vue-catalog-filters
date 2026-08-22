@@ -167,7 +167,7 @@ onUnmounted(() => {
                 <img
                   :src="product.images[0]"
                   :alt="product.name"
-                  class="w-12 h-14 object-cover rounded-lg bg-zinc-800 shrink-0"
+                  class="w-12 aspect-[3/4] object-cover object-top rounded-lg bg-zinc-800 shrink-0"
                 />
                 <div class="flex-1 min-w-0">
                   <p class="text-xs text-amber-400/90 font-medium">{{ product.brand }}</p>
@@ -184,7 +184,7 @@ onUnmounted(() => {
                     </span>
                     <span
                       v-if="product.discountPercentage"
-                      class="text-[10px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 rounded font-semibold"
+                      class="text-[10px] px-1.5 py-0.5 bg-amber-500 text-black rounded font-bold shadow-sm"
                     >
                       -{{ product.discountPercentage }}%
                     </span>

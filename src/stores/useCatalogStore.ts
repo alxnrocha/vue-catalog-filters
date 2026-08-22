@@ -254,11 +254,86 @@ export const useCatalogStore = defineStore('catalog', () => {
     return list;
   });
 
+  // Dynamic Multi-Faceted Match Evaluator (Algolia / Shopify style)
+  const matchesFiltersExcept = (product: Product, exceptDimension: string): boolean => {
+    // 1. Search query
+    if (exceptDimension !== 'search' && filters.search.trim()) {
+      const q = filters.search.toLowerCase().trim();
+      const matchName = product.name.toLowerCase().includes(q);
+      const matchBrand = product.brand.toLowerCase().includes(q);
+      const matchDesc = product.description.toLowerCase().includes(q);
+      const matchDetails = product.details.some((d) => d.toLowerCase().includes(q));
+      if (!matchName && !matchBrand && !matchDesc && !matchDetails) {
+        return false;
+      }
+    }
+
+    // 2. Category
+    if (exceptDimension !== 'category' && filters.category && filters.category !== 'all') {
+      if (product.category !== filters.category) {
+        return false;
+      }
+    }
+
+    // 3. Price range
+    if (exceptDimension !== 'price') {
+      if (product.price < filters.minPrice || product.price > filters.maxPrice) {
+        return false;
+      }
+    }
+
+    // 4. Colors
+    if (exceptDimension !== 'colors' && filters.colors.length > 0) {
+      const hasMatchingColor = product.colors.some((c) => filters.colors.includes(c.id));
+      if (!hasMatchingColor) {
+        return false;
+      }
+    }
+
+    // 5. Sizes
+    if (exceptDimension !== 'sizes' && filters.sizes.length > 0) {
+      const hasMatchingSize = product.sizes.some((s) => filters.sizes.includes(s));
+      if (!hasMatchingSize) {
+        return false;
+      }
+    }
+
+    // 6. Rating
+    if (exceptDimension !== 'minRating' && filters.minRating > 0) {
+      if (product.rating < filters.minRating) {
+        return false;
+      }
+    }
+
+    // 7. Brands
+    if (exceptDimension !== 'brands' && filters.brands.length > 0) {
+      if (!filters.brands.includes(product.brand)) {
+        return false;
+      }
+    }
+
+    // 8. In Stock
+    if (exceptDimension !== 'inStock' && filters.inStockOnly && !product.inStock) {
+      return false;
+    }
+
+    // 9. On Sale
+    if (exceptDimension !== 'onSale' && filters.onSaleOnly && (!product.discountPercentage || product.discountPercentage <= 0)) {
+      return false;
+    }
+
+    return true;
+  };
+
   const categoryFacetCounts = computed(() => {
-    const counts: Record<string, number> = { all: products.value.length };
+    const counts: Record<string, number> = {
+      all: products.value.filter((p) => matchesFiltersExcept(p, 'category')).length,
+    };
     mockCategories.forEach((cat) => {
       if (cat.id !== 'all') {
-        counts[cat.id] = products.value.filter((p) => p.category === cat.id).length;
+        counts[cat.id] = products.value.filter(
+          (p) => matchesFiltersExcept(p, 'category') && p.category === cat.id
+        ).length;
       }
     });
     return counts;
@@ -267,7 +342,9 @@ export const useCatalogStore = defineStore('catalog', () => {
   const brandFacetCounts = computed(() => {
     const counts: Record<string, number> = {};
     mockBrands.forEach((b) => {
-      counts[b.name] = products.value.filter((p) => p.brand === b.name).length;
+      counts[b.name] = products.value.filter(
+        (p) => matchesFiltersExcept(p, 'brands') && p.brand === b.name
+      ).length;
     });
     return counts;
   });
@@ -275,7 +352,20 @@ export const useCatalogStore = defineStore('catalog', () => {
   const colorFacetCounts = computed(() => {
     const counts: Record<string, number> = {};
     mockColors.forEach((col) => {
-      counts[col.id] = products.value.filter((p) => p.colors.some((c) => c.id === col.id)).length;
+      counts[col.id] = products.value.filter(
+        (p) => matchesFiltersExcept(p, 'colors') && p.colors.some((c) => c.id === col.id)
+      ).length;
+    });
+    return counts;
+  });
+
+  const sizeFacetCounts = computed(() => {
+    const counts: Record<string, number> = {};
+    const allSizes: ProductSize[] = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Única'];
+    allSizes.forEach((sz) => {
+      counts[sz] = products.value.filter(
+        (p) => matchesFiltersExcept(p, 'sizes') && p.sizes.includes(sz)
+      ).length;
     });
     return counts;
   });
@@ -453,6 +543,7 @@ export const useCatalogStore = defineStore('catalog', () => {
     categoryFacetCounts,
     brandFacetCounts,
     colorFacetCounts,
+    sizeFacetCounts,
     // Actions
     setSearch,
     setCategory,

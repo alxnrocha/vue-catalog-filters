@@ -128,7 +128,7 @@ const handleProceedToCheckout = () => {
                 <img
                   :src="item.product.images[0]"
                   :alt="item.product.name"
-                  class="w-18 h-22 object-cover object-top rounded-lg bg-zinc-800 shrink-0"
+                  class="w-18 aspect-[3/4] object-cover object-top rounded-lg bg-zinc-800 shrink-0"
                 />
 
                 <!-- Info -->

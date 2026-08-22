@@ -116,9 +116,9 @@ const decrementQuantity = () => {
         @click="handleClose"
       ></div>
 
-      <!-- Modal Card -->
+      <!-- Modal Card (Strictly fixed height on desktop) -->
       <div
-        class="relative w-full max-w-5xl lg:max-w-6xl xl:max-w-[1260px] bg-[#0e1420] border border-zinc-700/90 rounded-2xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.9),0_0_60px_rgba(245,158,11,0.18)] overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
+        class="relative w-full max-w-4xl h-auto md:h-[600px] bg-[#0e1420] border border-zinc-700/90 rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_50px_rgba(245,158,11,0.15)] overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
       >
         <!-- Close Button -->
         <button
@@ -130,17 +130,17 @@ const decrementQuantity = () => {
           <X class="w-5 h-5" />
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 max-h-[88vh] overflow-y-auto">
-          <!-- Left: Gallery (expanded to 7 cols) -->
-          <div class="md:col-span-7 p-6 sm:p-8 lg:p-10 bg-[#090d15] border-b md:border-b-0 md:border-r border-zinc-800/80 flex items-center justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 h-full overflow-hidden">
+          <!-- Left: Gallery (Edge-to-edge full bleed, 100% fixed height) -->
+          <div class="relative h-72 md:h-full bg-[#090d15] border-b md:border-b-0 md:border-r border-zinc-800/80 overflow-hidden">
             <ProductGallery
               :images="product.images"
               :product-name="product.name"
             />
           </div>
 
-          <!-- Right: Details & Purchase Options (5 cols) -->
-          <div class="md:col-span-5 p-6 sm:p-8 lg:p-10 space-y-6 flex flex-col justify-between">
+          <!-- Right: Details & Purchase Options (Fixed height with scroll if needed) -->
+          <div class="p-6 md:p-8 space-y-5 h-full overflow-y-auto flex flex-col justify-between custom-scrollbar">
             <!-- Header Information -->
             <div class="space-y-2">
               <div class="flex items-center gap-2">
@@ -155,21 +155,29 @@ const decrementQuantity = () => {
                 {{ product.name }}
               </h2>
 
-              <!-- Rating & Reviews -->
+              <!-- Rating & Reviews (Fractional Stars with Exact Mathematical Precision) -->
               <div class="flex items-center gap-2 text-xs text-zinc-300">
-                <div class="flex text-amber-400">
-                  <Star
+                <div class="flex items-center gap-0.5 text-amber-400">
+                  <div
                     v-for="s in 5"
                     :key="s"
-                    :class="[
-                      'w-4 h-4',
-                      s <= Math.floor(product.rating)
-                        ? 'fill-amber-400 text-amber-400'
-                        : 'text-zinc-700',
-                    ]"
-                  />
+                    class="relative w-4 h-4"
+                  >
+                    <!-- Background Empty Star -->
+                    <Star class="w-4 h-4 text-zinc-700/60 fill-zinc-800/80" />
+
+                    <!-- Filled Golden Star Layer with Precise % Width -->
+                    <div
+                      class="absolute inset-0 overflow-hidden"
+                      :style="{
+                        width: `${Math.max(0, Math.min(100, (product.rating - (s - 1)) * 100))}%`
+                      }"
+                    >
+                      <Star class="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
+                    </div>
+                  </div>
                 </div>
-                <span class="font-bold text-zinc-200">{{ product.rating.toFixed(1) }}</span>
+                <span class="font-bold text-zinc-100 ml-1 font-mono">{{ product.rating.toFixed(1) }}</span>
                 <span class="text-zinc-500">({{ product.reviewsCount }} reseñas)</span>
               </div>
 
@@ -186,7 +194,7 @@ const decrementQuantity = () => {
                 </span>
                 <span
                   v-if="product.discountPercentage"
-                  class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-bold text-xs border border-amber-500/40"
+                  class="px-2 py-0.5 rounded-md bg-amber-500 text-black font-bold text-xs shadow-sm select-none"
                 >
                   -{{ product.discountPercentage }}%
                 </span>
