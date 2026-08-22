@@ -18,7 +18,7 @@ const handleQuickView = (product: Product) => {
       v-if="store.paginatedProducts.length > 0"
       :class="[
         store.filters.viewMode === 'grid'
-          ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6'
+          ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-6'
           : 'flex flex-col gap-4',
       ]"
     >

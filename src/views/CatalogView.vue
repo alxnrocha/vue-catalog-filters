@@ -66,7 +66,7 @@ const handleOpenCheckout = () => {
       @open-wishlist="handleOpenWishlist"
     />
 
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-1 max-w-[1760px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8">
       <div class="mb-8">
         <h1 class="text-3xl sm:text-4xl font-bold font-serif-luxury bg-gradient-to-r from-amber-100 via-amber-300 to-amber-500 bg-clip-text text-transparent">
           COLECCIÓN ATELIER 2026
@@ -77,14 +77,14 @@ const handleOpenCheckout = () => {
       </div>
 
       <!-- Main Catalog Layout (Sidebar + Products Grid) -->
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-7 xl:gap-8 items-start">
         <!-- Desktop Sidebar Filters -->
-        <div class="hidden lg:block p-6 rounded-2xl glass-card border border-zinc-800/80 sticky top-24">
+        <div class="hidden lg:block lg:col-span-1 p-6 rounded-2xl glass-card border border-zinc-800/80 sticky top-24">
           <FilterSidebar />
         </div>
 
         <!-- Products Main Section -->
-        <div class="lg:col-span-3 space-y-6">
+        <div class="lg:col-span-3 xl:col-span-4 space-y-6">
           <!-- Active Filters Bar -->
           <ActiveFilterChips />
 
