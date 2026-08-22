@@ -57,132 +57,139 @@ function closeBadge() {
 
 <style scoped>
 .author-project-badge {
-  position: fixed;
-  bottom: 16px;
-  left: 16px;
-  z-index: 99999;
-  max-width: 340px;
-  width: calc(100vw - 32px);
-  background-color: #0d1117;
-  border: 1px solid #30363d;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  color: #f0f6fc;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  user-select: none;
-  box-sizing: border-box;
+  position: fixed !important;
+  bottom: 16px !important;
+  left: 16px !important;
+  z-index: 99999 !important;
+  max-width: 340px !important;
+  width: calc(100vw - 32px) !important;
+  background-color: #0d1117 !important;
+  border: 1px solid #30363d !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  color: #f0f6fc !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
 }
 .badge-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-bottom: 8px !important;
 }
 .badge-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
 }
 .badge-tag-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
 }
 .badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 6px;
-  background-color: #238636;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 6px !important;
+  background-color: #238636 !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
 }
 .badge-close {
-  background: transparent;
-  border: none;
-  color: #8b949e;
-  cursor: pointer;
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
+  background: transparent !important;
+  border: none !important;
+  color: #8b949e !important;
+  cursor: pointer !important;
+  padding: 2px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px !important;
 }
 .badge-close:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .badge-url {
-  margin-bottom: 8px;
+  margin-bottom: 8px !important;
 }
 .badge-url a {
-  color: #58a6ff;
-  text-decoration: underline;
-  font-size: 12px;
-  font-family: monospace;
-  word-break: break-all;
-  display: block;
+  color: #58a6ff !important;
+  text-decoration: underline !important;
+  font-size: 12px !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  word-break: break-all !important;
+  display: block !important;
 }
 .badge-desc {
-  color: #8b949e;
-  font-size: 11px;
-  line-height: 1.4;
-  margin: 0 0 12px 0;
+  color: #8b949e !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  margin: 0 0 12px 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
 }
 .badge-desc a {
-  color: #c9d1d9;
-  font-weight: 600;
-  text-decoration: none;
+  color: #c9d1d9 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
 }
 .badge-desc a:hover {
-  color: #58a6ff;
-  text-decoration: underline;
+  color: #58a6ff !important;
+  text-decoration: underline !important;
 }
 .badge-footer {
-  padding-top: 8px;
-  border-top: 1px solid #21262d;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 10px;
-  color: #8b949e;
+  padding-top: 8px !important;
+  border-top: 1px solid #21262d !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 10px !important;
+  color: #8b949e !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
 }
 .badge-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
 .badge-active {
-  color: #3fb950;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  color: #3fb950 !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
 }
 .badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #238636;
-  display: inline-block;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background-color: #238636 !important;
+  display: inline-block !important;
 }
 .badge-divider {
-  color: #484f58;
+  color: #484f58 !important;
 }
 .badge-branch {
-  color: #c9d1d9;
-  font-family: monospace;
+  color: #c9d1d9 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
 }
 </style>
