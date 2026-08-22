@@ -6,15 +6,17 @@ import CommandPalette from '@/components/common/CommandPalette.vue';
 import FilterSidebar from '@/components/catalog/FilterSidebar.vue';
 import ActiveFilterChips from '@/components/catalog/ActiveFilterChips.vue';
 import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
+import ProductGrid from '@/components/catalog/ProductGrid.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
+import { useWishlistStore } from '@/stores/useWishlistStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
 import type { Product } from '@/types/catalog';
 
 const store = useCatalogStore();
+const wishlistStore = useWishlistStore();
 useCatalogUrlSync();
 
 const cartCount = ref(0);
-const wishlistCount = ref(0);
 
 const handleSelectProductFromSearch = (product: Product) => {
   store.openQuickView(product);
@@ -38,7 +40,7 @@ const handleOpenWishlist = () => {
     <AppHeader
       v-model:search-query="store.filters.search"
       :cart-count="cartCount"
-      :wishlist-count="wishlistCount"
+      :wishlist-count="wishlistStore.wishlistCount"
       @open-search-modal="handleOpenSearchModal"
       @open-cart="handleOpenCart"
       @open-wishlist="handleOpenWishlist"
@@ -69,14 +71,8 @@ const handleOpenWishlist = () => {
           <!-- Toolbar (Count, Sorting, View Switcher) -->
           <CatalogToolbar />
 
-          <!-- Products Grid Placeholder (to be replaced in Issue #10) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="i in 3" :key="i" class="rounded-2xl glass-card p-4 border border-zinc-800/80 space-y-3">
-              <div class="aspect-[3/4] bg-zinc-800/60 rounded-xl animate-pulse"></div>
-              <div class="h-4 bg-zinc-800/80 rounded w-2/3"></div>
-              <div class="h-4 bg-amber-500/30 rounded w-1/3"></div>
-            </div>
-          </div>
+          <!-- Real Products Grid / List -->
+          <ProductGrid />
         </div>
       </div>
     </main>
