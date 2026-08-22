@@ -52,11 +52,11 @@ graph TD
   - Composable `useCatalogUrlSync` que reflete o estado da store na URL e carrega filtros de URLs compartilhadas.
 
 ### 📍 Milestone 3: Faceted Search & Filter Panel
-* [ ] **Issue #07**: `feat: build live search bar with autocomplete dropdown, recent searches and keyboard shortcuts`
+* [x] **Issue #07**: `feat: build live search bar with autocomplete dropdown, recent searches and keyboard shortcuts`
   - Barra de busca com debounce, modal Command Palette (`⌘K`), destaque de termos e histórico recente.
-* [ ] **Issue #08**: `feat: build desktop faceted sidebar with category accordion, dual price slider and color swatches`
+* [x] **Issue #08**: `feat: build desktop faceted sidebar with category accordion, dual price slider and color swatches`
   - Painel lateral com categorias, slider duplo de preço com display numérico, swatches de cores, chips de tamanho e marcas com busca.
-* [ ] **Issue #09**: `feat: create active filter chips bar with removal and clear-all functionality`
+* [x] **Issue #09**: `feat: create active filter chips bar with removal and clear-all functionality`
   - Barra superior de tags ativas (`Chaquetas ✕`, `Negro ✕`, `€50 - €650 ✕`) com contagem de resultados dinâmicos.
 
 ### 📍 Milestone 4: Product Grid, List View & Quick View Studio
