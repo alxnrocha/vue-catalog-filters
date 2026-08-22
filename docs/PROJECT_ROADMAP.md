@@ -60,18 +60,18 @@ graph TD
   - Barra superior de tags ativas (`Chaquetas ✕`, `Negro ✕`, `€50 - €650 ✕`) com contagem de resultados dinâmicos.
 
 ### 📍 Milestone 4: Product Grid, List View & Quick View Studio
-* [ ] **Issue #10**: `feat: develop luxury product cards with hover preview, color variants, wishlist toggle and grid/list view`
-  - Cards de produto com transição suave, seletor de variante de cor, badge de desconto, botão de wishlist e alternância Grid/Lista.
-* [ ] **Issue #11**: `feat: build quick view modal with high-res gallery, size selector, stock indicator and animated add-to-cart`
-  - Modal de visualização rápida com carrossel de fotos, seleção de tamanho, cálculo de estoque e botão de adicionar com estado de carregamento.
+* [x] **Issue #10**: `feat: develop luxury product cards with hover preview, color variants, wishlist toggle and grid/list view`
+  - Cards com efeito hover, pré-visualização de fotos, mini swatches de cores interativos, badge de desconto, botão de wishlist e layout Grid/List.
+* [x] **Issue #11**: `feat: build quick view modal with high-res gallery, size selector, stock indicator and animated add-to-cart`
+  - Modal rápido com galeria de miniaturas verticais, zoom suave, seletor de cores, seletor de tamanhos e botão de compra animado.
 
 ### 📍 Milestone 5: Cart Drawer, Checkout & Mobile Filter
-* [ ] **Issue #12**: `feat: build slide-over cart drawer with quantity stepper, promo code and order summary`
-  - Painel lateral deslizante de carrinho com cálculo de frete grátis, cupom promocional e persistência em `localStorage`.
-* [ ] **Issue #13**: `feat: implement simulated checkout drawer with multi-step validation using VeeValidate and Zod`
-  - Checkout com formulário validado (dados de envio, pagamento simulado, feedback com confete).
-* [ ] **Issue #14**: `feat: build mobile responsive slide-over filter bottom sheet with dynamic filter counts`
-  - Drawer deslizante no mobile com todos os filtros facetados e botão fixo "Aplicar Filtros (X)".
+* [x] **Issue #12**: `feat: build slide-over cart drawer with quantity stepper, promo code and order summary`
+  - Drawer lateral da bolsa de compras com controle de quantidade (+ / -), barra de progresso de frete grátis (€100) e cupons de desconto (`AURELIA20`).
+* [x] **Issue #13**: `feat: implement simulated checkout drawer with multi-step validation using VeeValidate and Zod`
+  - Fluxo de checkout em 3 etapas (Contato/Entrega, Pagamento simulado com cartão e Confirmação com número de pedido gerado).
+* [x] **Issue #14**: `feat: build mobile responsive slide-over filter bottom sheet with dynamic filter counts`
+  - Painel lateral/inferior de filtros para dispositivos móveis com sincronização completa e botão 'Ver X resultados'.
 
 ### 📍 Milestone 6: Unit Tests, CI/CD & Deploy
 * [ ] **Issue #15**: `test: write comprehensive unit tests with Vitest and Vue Test Utils for stores and components`
