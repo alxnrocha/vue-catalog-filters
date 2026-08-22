@@ -2,8 +2,10 @@
 import { ref } from 'vue';
 import AppHeader from '@/components/common/AppHeader.vue';
 import AppFooter from '@/components/common/AppFooter.vue';
+import CommandPalette from '@/components/common/CommandPalette.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
+import type { Product } from '@/types/catalog';
 
 const store = useCatalogStore();
 useCatalogUrlSync();
@@ -11,8 +13,12 @@ useCatalogUrlSync();
 const cartCount = ref(0);
 const wishlistCount = ref(0);
 
+const handleSelectProductFromSearch = (product: Product) => {
+  store.openQuickView(product);
+};
+
 const handleOpenSearchModal = () => {
-  // Will connect with search modal in Issue #07
+  store.openCommandPalette();
 };
 
 const handleOpenCart = () => {
@@ -67,5 +73,11 @@ const handleOpenWishlist = () => {
     </main>
 
     <AppFooter />
+
+    <!-- Global Command Palette Modal (Ctrl+K / Cmd+K) -->
+    <CommandPalette
+      v-model="store.isCommandPaletteOpen"
+      @select-product="handleSelectProductFromSearch"
+    />
   </div>
 </template>
