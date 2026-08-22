@@ -40,15 +40,15 @@ graph TD
 ### 📍 Milestone 1: Setup & Design System Foundation
 * [x] **Issue #01**: `chore: bootstrap Vue 3.5 + TypeScript + Vite + Tailwind v4 + Pinia + Vue Router project`
   - Setup do projeto, aliases `@/`, scripts de build, Oxlint, Vitest e estrutura de pastas.
-* [ ] **Issue #03**: `feat: implement Aurelia luxury design system tokens and base UI primitives`
+* [x] **Issue #03**: `feat: implement Aurelia luxury design system tokens and base UI primitives`
   - Tokens de cor (Obsidian, Sand, Amber Gold), tipografia, botões, badges, inputs e App Header com navegação e atalhos.
 
 ### 📍 Milestone 2: Catalog State Engine & URL Sync (Pinia)
-* [ ] **Issue #04**: `feat: implement mock dataset and catalog types for luxury apparel and accessories`
+* [x] **Issue #04**: `feat: implement mock dataset and catalog types for luxury apparel and accessories`
   - Dataset com 24+ produtos ricos (categorias, marcas, preços, cores, tamanhos, avaliações, tags de desconto e estoque).
-* [ ] **Issue #05**: `feat: setup Pinia catalog store with faceted filtering, multi-criteria sorting and pagination`
+* [x] **Issue #05**: `feat: setup Pinia catalog store with faceted filtering, multi-criteria sorting and pagination`
   - Store `useCatalogStore` com filtros compostos, ordenação (preço, novidade, avaliação) e paginação calculada.
-* [ ] **Issue #06**: `feat: implement bidirectional URL query params synchronization with Vue Router`
+* [x] **Issue #06**: `feat: implement bidirectional URL query params synchronization with Vue Router`
   - Composable `useCatalogUrlSync` que reflete o estado da store na URL e carrega filtros de URLs compartilhadas.
 
 ### 📍 Milestone 3: Faceted Search & Filter Panel
