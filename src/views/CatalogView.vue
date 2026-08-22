@@ -2,8 +2,12 @@
 import { ref } from 'vue';
 import AppHeader from '@/components/common/AppHeader.vue';
 import AppFooter from '@/components/common/AppFooter.vue';
+import { useCatalogStore } from '@/stores/useCatalogStore';
+import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
 
-const searchQuery = ref('');
+const store = useCatalogStore();
+useCatalogUrlSync();
+
 const cartCount = ref(0);
 const wishlistCount = ref(0);
 
@@ -23,7 +27,7 @@ const handleOpenWishlist = () => {
 <template>
   <div class="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
     <AppHeader
-      v-model:search-query="searchQuery"
+      v-model:search-query="store.filters.search"
       :cart-count="cartCount"
       :wishlist-count="wishlistCount"
       @open-search-modal="handleOpenSearchModal"
