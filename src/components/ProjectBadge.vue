@@ -74,13 +74,13 @@ function closeBadge() {
   bottom: 16px !important;
   left: 16px !important;
   z-index: 99999 !important;
-  max-width: 340px !important;
-  width: calc(100vw - 32px) !important;
+  width: 360px !important;
+  max-width: calc(100vw - 32px) !important;
   background-color: #0d1117 !important;
   border: 1px solid #30363d !important;
   border-radius: 14px !important;
   padding: 16px !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
   color: #f0f6fc !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
   font-size: 13px !important;
@@ -92,7 +92,7 @@ function closeBadge() {
 }
 .badge-header {
   display: flex !important;
-  align-items: flex-start !important;
+  align-items: center !important;
   justify-content: space-between !important;
   gap: 8px !important;
   margin-bottom: 8px !important;
@@ -154,7 +154,9 @@ function closeBadge() {
   text-decoration: underline !important;
   font-size: 12px !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-  word-break: break-all !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
   display: block !important;
 }
 .badge-desc {
