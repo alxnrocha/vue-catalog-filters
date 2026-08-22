@@ -8,16 +8,19 @@ import ActiveFilterChips from '@/components/catalog/ActiveFilterChips.vue';
 import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
 import ProductGrid from '@/components/catalog/ProductGrid.vue';
 import QuickViewModal from '@/components/quickview/QuickViewModal.vue';
+import CartDrawer from '@/components/cart/CartDrawer.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useWishlistStore } from '@/stores/useWishlistStore';
+import { useCartStore } from '@/stores/useCartStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
 import type { Product, ProductColor, ProductSize } from '@/types/catalog';
 
 const store = useCatalogStore();
 const wishlistStore = useWishlistStore();
+const cartStore = useCartStore();
 useCatalogUrlSync();
 
-const cartCount = ref(0);
+const isCheckoutDrawerOpen = ref(false);
 
 const handleSelectProductFromSearch = (product: Product) => {
   store.openQuickView(product);
@@ -28,20 +31,25 @@ const handleOpenSearchModal = () => {
 };
 
 const handleOpenCart = () => {
-  // Will connect with cart drawer in Issue #12
+  cartStore.openCart();
 };
 
 const handleOpenWishlist = () => {
-  // Will connect with wishlist in Issue #10
+  store.filters.category = 'all';
+  store.resetFilters();
 };
+
 const handleAddToCartFromModal = (payload: {
   product: Product;
   selectedColor: ProductColor;
   selectedSize: ProductSize;
   quantity: number;
 }) => {
-  // Handled with cart store in Issue #12
-  console.log('Added to cart:', payload);
+  cartStore.addItem(payload.product, payload.selectedColor, payload.selectedSize, payload.quantity);
+};
+
+const handleOpenCheckout = () => {
+  isCheckoutDrawerOpen.value = true;
 };
 </script>
 
@@ -49,7 +57,7 @@ const handleAddToCartFromModal = (payload: {
   <div class="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
     <AppHeader
       v-model:search-query="store.filters.search"
-      :cart-count="cartCount"
+      :cart-count="cartStore.totalItemsCount"
       :wishlist-count="wishlistStore.wishlistCount"
       @open-search-modal="handleOpenSearchModal"
       @open-cart="handleOpenCart"
@@ -100,6 +108,12 @@ const handleAddToCartFromModal = (payload: {
       v-model="store.isQuickViewOpen"
       :product="store.selectedProductForQuickView"
       @add-to-cart="handleAddToCartFromModal"
+    />
+
+    <!-- Shopping Cart Slide-over Drawer -->
+    <CartDrawer
+      v-model="cartStore.isCartOpen"
+      @open-checkout="handleOpenCheckout"
     />
   </div>
 </template>
