@@ -4,6 +4,8 @@ import AppHeader from '@/components/common/AppHeader.vue';
 import AppFooter from '@/components/common/AppFooter.vue';
 import CommandPalette from '@/components/common/CommandPalette.vue';
 import FilterSidebar from '@/components/catalog/FilterSidebar.vue';
+import ActiveFilterChips from '@/components/catalog/ActiveFilterChips.vue';
+import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue';
 import { useCatalogStore } from '@/stores/useCatalogStore';
 import { useCatalogUrlSync } from '@/composables/useCatalogUrlSync';
 import type { Product } from '@/types/catalog';
@@ -59,7 +61,15 @@ const handleOpenWishlist = () => {
           <FilterSidebar />
         </div>
 
+        <!-- Products Main Section -->
         <div class="lg:col-span-3 space-y-6">
+          <!-- Active Filters Bar -->
+          <ActiveFilterChips />
+
+          <!-- Toolbar (Count, Sorting, View Switcher) -->
+          <CatalogToolbar />
+
+          <!-- Products Grid Placeholder (to be replaced in Issue #10) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div v-for="i in 3" :key="i" class="rounded-2xl glass-card p-4 border border-zinc-800/80 space-y-3">
               <div class="aspect-[3/4] bg-zinc-800/60 rounded-xl animate-pulse"></div>
