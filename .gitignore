@@ -32,3 +32,5 @@ dist-ssr
 # Local Progress & AI Design Prompts (Local Only - Never Commit)
 STATUS_PROGRESSO.md
 design/PROMPTS.md
+
+docs/
